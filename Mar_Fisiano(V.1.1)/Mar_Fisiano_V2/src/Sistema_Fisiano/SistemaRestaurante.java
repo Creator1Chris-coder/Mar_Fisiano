@@ -173,6 +173,21 @@ class GestionMenu {
     public List<Producto> getMenu() {
         return menu;
     }
+
+	public Producto[] getMenu() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Producto[] getMenu() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public Producto[] getMenu() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
 
 class GestionInventario {
@@ -305,14 +320,14 @@ class GestionReportes {
     }
 }
 
-public class SistemaRestauranteModular {
+public class SistemaRestaurante {
     GestionMenu gestionMenu;
     GestionInventario gestionInventario;
     GestionPromociones gestionPromociones;
     GestionPedidos gestionPedidos;
     GestionReportes gestionReportes;
 
-    public SistemaRestauranteModular() {
+    public SistemaRestaurante() {
         gestionMenu = new GestionMenu();
         gestionInventario = new GestionInventario();
         gestionPromociones = new GestionPromociones();
@@ -321,7 +336,7 @@ public class SistemaRestauranteModular {
     }
 
     public void actualizarDisponibilidadProductos() {
-        for (Producto p : gestionMenu.getMenu()) {
+        for (Producto p : ((GestionMenu) gestionMenu).getMenu()) {
             boolean disponible = true;
             for (String ingr : p.ingredientes) {
                 if (!gestionInventario.estaDisponible(ingr)) {
@@ -347,7 +362,7 @@ public class SistemaRestauranteModular {
     }
 
     public static void main(String[] args) throws Exception {
-        SistemaRestauranteModular sistema = new SistemaRestauranteModular();
+        SistemaRestaurante sistema = new SistemaRestaurante();
 
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
 

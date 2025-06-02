@@ -1,6 +1,7 @@
 package Sistema_Fisiano;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GestionMenu {
     private List<Producto> menu;
@@ -26,8 +27,16 @@ public class GestionMenu {
     }
 
     public void eliminarProducto(String nombre) {
-        menu.removeIf(p -> p.nombre.equalsIgnoreCase(nombre));
-        System.out.println("Producto eliminado si existía: " + nombre);
+        boolean eliminado = menu.removeIf(p -> p.nombre.equalsIgnoreCase(nombre));
+        if (eliminado) {
+            System.out.println("Producto eliminado: " + nombre);
+        } else {
+            System.out.println("Producto no encontrado para eliminar.");
+        }
+    }
+
+    public List<Producto> getMenu() {
+        return menu;
     }
 
     public List<Producto> filtrarPorCategoria(String categoria) {
@@ -39,7 +48,6 @@ public class GestionMenu {
         }
         return filtrados;
     }
-
     public void mostrarMenu() {
         System.out.println("Menú completo:");
         for (Producto p : menu) {
@@ -47,3 +55,4 @@ public class GestionMenu {
         }
     }
 }
+
